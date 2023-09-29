@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -37,12 +39,18 @@ public class MainActivity extends AppCompatActivity {
         int val3 = val1*val2;
         goToActivity(String.valueOf(val3));
     }
-    public void Division(View view){
+    public void Division(View view) {
         EditText myTextField = (EditText) findViewById(R.id.editTextText);
         EditText myTextField2 = (EditText) findViewById(R.id.editTextText2);
         double val1 = Integer.valueOf(myTextField.getText().toString());
         double val2 = Integer.valueOf(myTextField2.getText().toString());
-        double val3 = val1/val2;
+        if (val2 == 0) {
+            Toast.makeText(this, "We cannot divide anything by zero", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        double val3 = val1 / val2;
+
+
         goToActivity(String.valueOf(val3));
     }
     public void goToActivity(String s) {
